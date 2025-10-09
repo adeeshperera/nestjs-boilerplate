@@ -32,7 +32,7 @@ A production-ready NestJS boilerplate with JWT authentication, Prisma ORM, Supab
 ### Prerequisites
 
 - 📦 **Node.js** (v18 or higher)
-- 🧶 **pnpm** package manager
+- 🧅 **Bun** package manager
 - 🐘 **Supabase** account and project
 - 🔑 **OpenSSL** for key generation
 
@@ -46,7 +46,7 @@ A production-ready NestJS boilerplate with JWT authentication, Prisma ORM, Supab
 
 2. **Install dependencies**
    ```bash
-   pnpm install
+   bun install
    ```
 
 3. **Environment setup**
@@ -70,15 +70,15 @@ A production-ready NestJS boilerplate with JWT authentication, Prisma ORM, Supab
 5. **Database setup**
    ```bash
    # Generate Prisma client
-   npx prisma generate
+   bunx prisma generate
    
    # Apply database migrations
-   npx prisma db push
+   bunx prisma db push
    ```
 
 6. **Start development server**
    ```bash
-   pnpm run start:dev
+   bun run dev
    ```
 
 🎉 **Your API is now running at** `http://localhost:9000`
@@ -178,13 +178,13 @@ src/
 
 | Script | Description |
 |--------|-------------|
-| `pnpm run start` | Start production server |
-| `pnpm run start:dev` | Start development server with hot reload |
-| `pnpm run start:debug` | Start server in debug mode |
-| `pnpm run build` | Build the application |
-| `pnpm run test` | Run unit tests |
-| `pnpm run test:e2e` | Run end-to-end tests |
-| `pnpm run test:cov` | Run tests with coverage |
+| `bun run start` | Start production server |
+| `bun run dev` | Start development server with hot reload |
+| `bun run start:debug` | Start server in debug mode |
+| `bun run build` | Build the application |
+| `bun run test` | Run unit tests |
+| `bun run test:e2e` | Run end-to-end tests |
+| `bun run test:cov` | Run tests with coverage |
 
 ## 🗃️ Database Operations
 
@@ -192,11 +192,11 @@ src/
 
 | Command | Description |
 |---------|-------------|
-| `npx prisma generate` | Generate Prisma client |
-| `npx prisma db push` | Push schema to database |
-| `npx prisma migrate dev` | Create and apply migration |
-| `npx prisma studio` | Open Prisma Studio |
-| `npx prisma migrate status` | Check migration status |
+| `bunx prisma generate` | Generate Prisma client |
+| `bunx prisma db push` | Push schema to database |
+| `bunx prisma migrate dev` | Create and apply migration |
+| `bunx prisma studio` | Open Prisma Studio |
+| `bunx prisma migrate status` | Check migration status |
 
 ### 📊 Database Schema
 
@@ -237,16 +237,16 @@ enum Role {
 
 ```bash
 # Run unit tests
-pnpm run test
+bun run test
 
 # Run tests in watch mode
-pnpm run test:watch
+bun run test:watch
 
 # Run e2e tests
-pnpm run test:e2e
+bun run test:e2e
 
 # Generate coverage report
-pnpm run test:cov
+bun run test:cov
 ```
 
 ## 📖 Documentation

@@ -1,24 +1,14 @@
-FROM node:20-alpine AS deps
+FROM oven/bun:1-alpine AS deps
 WORKDIR /app
-
-# Enable pnpm
-ENV PNPM_HOME="/pnpm"
-ENV PATH="$PNPM_HOME:$PATH"
-RUN corepack enable pnpm
 
 # Copy package files
-COPY package.json pnpm-lock.yaml* ./
+COPY package.json bun.lockb* ./
 
 # Install dependencies
-RUN pnpm install --frozen-lockfile
+RUN bun install --frozen-lockfile
 
-FROM node:20-alpine AS builder
+FROM oven/bun:1-alpine AS builder
 WORKDIR /app
-
-# Enable pnpm
-ENV PNPM_HOME="/pnpm"
-ENV PATH="$PNPM_HOME:$PATH"
-RUN corepack enable pnpm
 
 # Install OpenSSL for Prisma
 RUN apk add --no-cache openssl
@@ -30,7 +20,7 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
 # Generate Prisma client
-RUN npx prisma generate
+RUN bunx prisma generate
 
 # Generate JWT keys
 RUN mkdir -p keys && \
@@ -40,10 +30,10 @@ RUN mkdir -p keys && \
     chmod 644 keys/public.pem
 
 # Build the application
-RUN pnpm build
+RUN bun run build
 
 # Install production dependencies only
-RUN pnpm install --frozen-lockfile --prod
+RUN bun install --frozen-lockfile --production
 
 FROM node:20-alpine AS runner
 WORKDIR /app
@@ -78,4 +68,4 @@ HEALTHCHECK --interval=30s --timeout=5s --start-period=30s --retries=3 \
   CMD wget --no-verbose --tries=1 --spider http://localhost:9000/health || exit 1
 
 # Use dumb-init for proper signal handling
-CMD ["dumb-init", "node", "dist/main.js"] 
+CMD ["dumb-init", "node", "dist/main.js"]
