@@ -2,14 +2,10 @@ FROM node:20-alpine AS deps
 WORKDIR /app
 
 # Copy package files
-COPY package.json ./
+COPY package.json package-lock.json* ./
 
-# Generate package-lock.json and install (needed for Docker Prisma compatibility)
-RUN npm install --legacy-peer-deps
-
-# Copy prisma and generate client
-COPY prisma ./prisma
-RUN npx prisma generate
+# Install dependencies
+RUN npm ci
 
 FROM node:20-alpine AS builder
 WORKDIR /app
@@ -17,11 +13,14 @@ WORKDIR /app
 # Install OpenSSL for Prisma
 RUN apk add --no-cache openssl
 
-# Copy dependencies from deps stage (includes generated Prisma client)
+# Copy dependencies from deps stage
 COPY --from=deps /app/node_modules ./node_modules
 
 # Copy source code
 COPY . .
+
+# Generate Prisma client
+RUN npx prisma generate
 
 # Generate JWT keys
 RUN mkdir -p keys && \
@@ -34,10 +33,7 @@ RUN mkdir -p keys && \
 RUN npm run build
 
 # Install production dependencies only
-RUN npm install --only=production --legacy-peer-deps
-
-# Regenerate Prisma client for production
-RUN npx prisma generate
+RUN npm ci --only=production
 
 FROM node:20-alpine AS runner
 WORKDIR /app
@@ -73,3 +69,4 @@ HEALTHCHECK --interval=30s --timeout=5s --start-period=30s --retries=3 \
 
 # Use dumb-init for proper signal handling
 CMD ["dumb-init", "node", "dist/main.js"]
+

@@ -13,10 +13,10 @@ This guide covers database operations, migrations, and schema management for the
 
 ## Prerequisites
 
-- Node.js and pnpm installed
+- Node.js and Bun installed
 - Supabase project set up
 - Environment variables configured
-- Prisma CLI installed (`npx prisma` or global installation)
+- Prisma CLI installed (`bunx prisma` or global installation)
 
 ## Environment Setup
 
@@ -92,28 +92,28 @@ enum Role {
 #### 1. Create and Apply Migration
 ```bash
 # Create a new migration and apply it to the database
-npx prisma migrate dev --name <migration_name>
+bunx prisma migrate dev --name <migration_name>
 
 # Example: Adding a new field
-npx prisma migrate dev --name add_user_avatar
+bunx prisma migrate dev --name add_user_avatar
 ```
 
 #### 2. Generate Prisma Client
 ```bash
 # Generate TypeScript client after schema changes
-npx prisma generate
+bunx prisma generate
 ```
 
 #### 3. Reset Database (Development Only)
 ```bash
 # Reset database and apply all migrations
-npx prisma migrate reset
+bunx prisma migrate reset
 ```
 
 #### 4. Check Migration Status
 ```bash
 # Check which migrations have been applied
-npx prisma migrate status
+bunx prisma migrate status
 ```
 
 ### Production Workflow
@@ -121,14 +121,14 @@ npx prisma migrate status
 #### 1. Deploy Migrations
 ```bash
 # Apply pending migrations to production database
-npx prisma migrate deploy
+bunx prisma migrate deploy
 ```
 
 #### 2. Database Push (Alternative for prototyping)
 ```bash
 # Push schema changes directly without creating migration files
 # Use only in development for rapid prototyping
-npx prisma db push
+bunx prisma db push
 ```
 
 ### Database Inspection
@@ -136,13 +136,13 @@ npx prisma db push
 #### 1. View Database in Prisma Studio
 ```bash
 # Open Prisma Studio to view and edit data
-npx prisma studio
+bunx prisma studio
 ```
 
 #### 2. Introspect Existing Database
 ```bash
 # Generate Prisma schema from existing database
-npx prisma db pull
+bunx prisma db pull
 ```
 
 ## Common Workflows
@@ -171,12 +171,12 @@ model User {
 
 2. **Create Migration**:
 ```bash
-npx prisma migrate dev --name add_post_model
+bunx prisma migrate dev --name add_post_model
 ```
 
 3. **Generate Client**:
 ```bash
-npx prisma generate
+bunx prisma generate
 ```
 
 ### 2. Modifying Existing Fields
@@ -194,7 +194,7 @@ model User {
 
 2. **Create Migration**:
 ```bash
-npx prisma migrate dev --name add_username_field
+bunx prisma migrate dev --name add_username_field
 ```
 
 ### 3. Data Seeding
@@ -239,7 +239,7 @@ main()
 
 Run seed:
 ```bash
-npx prisma db seed
+bunx prisma db seed
 ```
 
 Add to `package.json`:
@@ -258,7 +258,7 @@ Add to `package.json`:
 #### 1. Migration Conflicts
 ```bash
 # If migrations are out of sync
-npx prisma migrate resolve --applied <migration_name>
+bunx prisma migrate resolve --applied <migration_name>
 ```
 
 #### 2. Database Connection Issues
@@ -269,14 +269,14 @@ npx prisma migrate resolve --applied <migration_name>
 #### 3. Schema Drift
 ```bash
 # Check if database schema differs from Prisma schema
-npx prisma db push --preview-feature
+bunx prisma db push --preview-feature
 ```
 
 #### 4. Prisma Client Issues
 ```bash
 # Regenerate Prisma client
 rm -rf generated/prisma
-npx prisma generate
+bunx prisma generate
 ```
 
 #### 5. Hot Reload Issues (Development)
@@ -331,11 +331,11 @@ psql $DATABASE_URL < backup.sql
 
 ### 3. Environment Management
 - Use different databases for development, staging, and production
-- Never run `prisma migrate reset` on production
+- Never run `bunx prisma migrate reset` on production
 - Always backup before major migrations
 
 ### 4. Code Generation
-- Run `npx prisma generate` after every schema change
+- Run `bunx prisma generate` after every schema change
 - Commit generated files to version control
 - Use CI/CD to ensure generated code is up to date
 
@@ -367,15 +367,15 @@ export type UserWithRoles = User & { roles: UserRole[] };
 
 | Task | Command |
 |------|---------|
-| Create migration | `npx prisma migrate dev --name <name>` |
-| Deploy to production | `npx prisma migrate deploy` |
-| Generate client | `npx prisma generate` |
-| Reset database | `npx prisma migrate reset` |
-| Check status | `npx prisma migrate status` |
-| Open Studio | `npx prisma studio` |
-| Push schema | `npx prisma db push` |
-| Pull from DB | `npx prisma db pull` |
-| Run seed | `npx prisma db seed` |
+| Create migration | `bunx prisma migrate dev --name <name>` |
+| Deploy to production | `bunx prisma migrate deploy` |
+| Generate client | `bunx prisma generate` |
+| Reset database | `bunx prisma migrate reset` |
+| Check status | `bunx prisma migrate status` |
+| Open Studio | `bunx prisma studio` |
+| Push schema | `bunx prisma db push` |
+| Pull from DB | `bunx prisma db pull` |
+| Run seed | `bunx prisma db seed` |
 
 ## Support
 
