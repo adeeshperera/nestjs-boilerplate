@@ -1,22 +1,22 @@
-# 🚀 NestJS Boilerplate
+# NestJS Boilerplate
 
 A production-ready NestJS boilerplate with JWT authentication, Prisma ORM, Supabase PostgreSQL, and modern development tools.
 
-## ✨ Features
+## Features
 
-- 🔐 **JWT Authentication** with ES256 (ECDSA) encryption
-- 🗃️ **Prisma ORM** with Supabase PostgreSQL
-- 📚 **API Versioning** (v1) with Swagger documentation
-- 🛡️ **Security** with Helmet, CORS, and rate limiting
-- 🏗️ **Repository Pattern** for clean architecture
-- 📝 **Request Logging** with Morgan
-- 🔄 **Context Management** with nestjs-cls
-- 🎯 **TypeScript** with strict type checking
-- 📖 **Swagger/OpenAPI** documentation
-- 🧪 **Testing** setup with Jest
-- 🔧 **Development** tools and hot reload
+- **JWT Authentication** with ES256 (ECDSA) encryption
+- **Prisma ORM** with Supabase PostgreSQL
+- **API Versioning** (v1) with Swagger documentation
+- **Security** with Helmet, CORS, and rate limiting
+- **Repository Pattern** for clean architecture
+- **Request Logging** with Morgan
+- **Context Management** with nestjs-cls
+- **TypeScript** with strict type checking
+- **Swagger/OpenAPI** documentation
+- **Testing** setup with Jest
+- **Development** tools and hot reload
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Technology | Purpose | Version |
 |------------|---------|---------|
@@ -27,14 +27,14 @@ A production-ready NestJS boilerplate with JWT authentication, Prisma ORM, Supab
 | ![JWT](https://img.shields.io/badge/JWT-000000?style=flat&logo=jsonwebtokens&logoColor=white) | Authentication | ES256 |
 | ![Swagger](https://img.shields.io/badge/swagger-85EA2D?style=flat&logo=swagger&logoColor=black) | API Documentation | ^11.2.0 |
 
-## 🚦 Quick Start
+## Quick Start
 
 ### Prerequisites
 
-- 📦 **Node.js** (v18 or higher)
-- 🧅 **Bun** package manager
-- 🐘 **Supabase** account and project
-- 🔑 **OpenSSL** for key generation
+- **Node.js** (v18 or higher)
+- **Bun** package manager
+- **Supabase** account and project
+- **OpenSSL** for key generation
 
 ### Installation
 
@@ -81,35 +81,35 @@ A production-ready NestJS boilerplate with JWT authentication, Prisma ORM, Supab
    bun run dev
    ```
 
-🎉 **Your API is now running at** `http://localhost:9000`
+   **Your API is now running at** `http://localhost:9000`
 
-## 📋 Environment Variables
+## Environment Variables
 
 Create a `.env` file in the project root:
 
 ```env
-# 🗄️ Database Configuration
+# Database Configuration
 DATABASE_URL="postgresql://postgres.xxxxx:[PASSWORD]@aws-0-[region].pooler.supabase.com:6543/postgres"
 DIRECT_URL="postgresql://postgres.xxxxx:[PASSWORD]@aws-0-[region].aws.supabase.co:5432/postgres"
 
-# 🔐 JWT Configuration
+# JWT Configuration
 JWT_PRIVATE_KEY_PATH="./keys/private.pem"
 JWT_PUBLIC_KEY_PATH="./keys/public.pem"
 
-# 🌍 Application Configuration
+# Application Configuration
 NODE_ENV=development
 PORT=9000
 ALLOWED_ORIGINS=http://localhost:3000,http://localhost:3001
 ```
 
-## 📚 API Documentation
+## API Documentation
 
 Once the server is running, visit:
 
-- 📖 **Swagger UI**: `http://localhost:9000/doc`
-- 🔗 **API Base URL**: `http://localhost:9000/v1`
+- **Swagger UI**: `http://localhost:9000/doc`
+- **API Base URL**: `http://localhost:9000/v1`
 
-### 🔐 Authentication Endpoints
+### Authentication Endpoints
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
@@ -117,7 +117,7 @@ Once the server is running, visit:
 | `POST` | `/v1/auth/login` | Login and get JWT token |
 | `GET` | `/v1/auth/profile` | Get user profile (protected) |
 
-### 📝 Example Requests
+### Example Requests
 
 **Register User:**
 ```bash
@@ -145,36 +145,36 @@ curl -X GET http://localhost:9000/v1/auth/profile \
   -H "Authorization: Bearer YOUR_JWT_TOKEN"
 ```
 
-## 🏗️ Project Structure
+## Project Structure
 
 ```
 src/
-├── 📁 auth/                 # Authentication module
-│   ├── 📄 auth.controller.ts
-│   ├── 📄 auth.service.ts
-│   ├── 📄 auth.module.ts
-│   ├── 📄 jwt.strategy.ts
-│   ├── 📄 jwt-auth.guard.ts
-│   └── 📁 dto/
-├── 📁 users/                # Users module
-│   ├── 📄 users.controller.ts
-│   ├── 📄 users.service.ts
-│   ├── 📄 users.repository.ts
-│   ├── 📄 users.module.ts
-│   └── 📁 dto/
-├── 📁 prisma/               # Prisma service
-│   ├── 📄 prisma.service.ts
-│   └── 📄 prisma.module.ts
-├── 📁 utils/                # Utility functions
-│   ├── 📄 request-logging.ts
-│   └── 📄 exception-filter.ts
-├── 📄 app.module.ts         # Root module
-├── 📄 app.controller.ts     # Root controller
-├── 📄 app.service.ts        # Root service
-└── 📄 main.ts               # Application entry point
+├── auth/                    # Authentication module
+│   ├── auth.controller.ts
+│   ├── auth.service.ts
+│   ├── auth.module.ts
+│   ├── jwt.strategy.ts
+│   ├── jwt-auth.guard.ts
+│   └── dto/
+├── users/                   # Users module
+│   ├── users.controller.ts
+│   ├── users.service.ts
+│   ├── users.repository.ts
+│   ├── users.module.ts
+│   └── dto/
+├── prisma/                  # Prisma service
+│   ├── prisma.service.ts
+│   └── prisma.module.ts
+├── utils/                   # Utility functions
+│   ├── request-logging.ts
+│   └── exception-filter.ts
+├── app.module.ts            # Root module
+├── app.controller.ts        # Root controller
+├── app.service.ts           # Root service
+└── main.ts                  # Application entry point
 ```
 
-## 🔧 Available Scripts
+## Available Scripts
 
 | Script | Description |
 |--------|-------------|
@@ -186,7 +186,7 @@ src/
 | `bun run test:e2e` | Run end-to-end tests |
 | `bun run test:cov` | Run tests with coverage |
 
-## 🗃️ Database Operations
+## Database Operations
 
 ### Prisma Commands
 
@@ -198,7 +198,7 @@ src/
 | `bunx prisma studio` | Open Prisma Studio |
 | `bunx prisma migrate status` | Check migration status |
 
-### 📊 Database Schema
+### Database Schema
 
 ```prisma
 model User {
@@ -223,17 +223,17 @@ enum Role {
 }
 ```
 
-## 🔒 Security Features
+## Security Features
 
-- 🛡️ **Helmet** - Security headers
-- 🔐 **CORS** - Cross-origin resource sharing
-- ⏱️ **Rate Limiting** - Request throttling
-- 🔑 **JWT with ES256** - Asymmetric encryption
-- 🔒 **Password Hashing** - bcrypt with salt rounds
-- ✅ **Input Validation** - class-validator pipes
-- 🚫 **SQL Injection Protection** - Prisma ORM
+- **Helmet** - Security headers
+- **CORS** - Cross-origin resource sharing
+- **Rate Limiting** - Request throttling
+- **JWT with ES256** - Asymmetric encryption
+- **Password Hashing** - bcrypt with salt rounds
+- **Input Validation** - class-validator pipes
+- **SQL Injection Protection** - Prisma ORM
 
-## 🧪 Testing
+## Testing
 
 ```bash
 # Run unit tests
@@ -249,44 +249,35 @@ bun run test:e2e
 bun run test:cov
 ```
 
-## 📖 Documentation
+## Documentation
 
-- 📚 [Database Migration Guide](./docs/DATABASE_MIGRATION_GUIDE.md)
-- 🔐 [Authentication Setup](./docs/AUTH_SETUP.md)
-- 🏗️ [Architecture Guide](./docs/ARCHITECTURE.md)
+- [Database Migration Guide](./docs/DATABASE_MIGRATION_GUIDE.md)
+- [Authentication Setup](./docs/AUTH_SETUP.md)
+- [Architecture Guide](./docs/ARCHITECTURE.md)
 
-## 🤝 Contributing
+## Contributing
 
-1. 🍴 Fork the repository
-2. 🌿 Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. 💾 Commit your changes (`git commit -m 'Add amazing feature'`)
-4. 📤 Push to the branch (`git push origin feature/amazing-feature`)
-5. 🔄 Open a Pull Request
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
-- 🚀 [NestJS](https://nestjs.com/) - Progressive Node.js framework
-- 🔺 [Prisma](https://prisma.io/) - Next-generation ORM
-- 🟢 [Supabase](https://supabase.com/) - Open source Firebase alternative
-- 📝 [Swagger](https://swagger.io/) - API documentation
+- [NestJS](https://nestjs.com/) - Progressive Node.js framework
+- [Prisma](https://prisma.io/) - Next-generation ORM
+- [Supabase](https://supabase.com/) - Open source Firebase alternative
+- [Swagger](https://swagger.io/) - API documentation
 
-## 📞 Support
+## Support
 
 If you have any questions or need help, please:
 
-- 📧 Open an issue on GitHub
-- 💬 Check the documentation
-- 🔍 Search existing issues
-
----
-
-<div align="center">
-  <p>Made with ❤️ and ☕</p>
-  <p>
-    <a href="#-nestjs-boilerplate">⬆️ Back to top</a>
-  </p>
-</div>
+- Open an issue on GitHub
+- Check the documentation
+- Search existing issues
