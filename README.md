@@ -22,12 +22,12 @@ A production-ready NestJS boilerplate with JWT authentication, Prisma ORM, Supab
 
 | Technology | Purpose | Version |
 |------------|---------|---------|
-| ![NestJS](https://img.shields.io/badge/nestjs-E0234E?style=flat&logo=nestjs&logoColor=white) | Backend Framework | ^11.1.9 |
+| ![NestJS](https://img.shields.io/badge/nestjs-E0234E?style=flat&logo=nestjs&logoColor=white) | Backend Framework | ^11.1.12 |
 | ![TypeScript](https://img.shields.io/badge/typescript-3178C6?style=flat&logo=typescript&logoColor=white) | Language | ^5.9.3 |
-| ![Prisma](https://img.shields.io/badge/prisma-2D3748?style=flat&logo=prisma&logoColor=white) | ORM | ^7.1.0 |
+| ![Prisma](https://img.shields.io/badge/prisma-2D3748?style=flat&logo=prisma&logoColor=white) | ORM | ^7.3.0 |
 | ![PostgreSQL](https://img.shields.io/badge/postgresql-4169E1?style=flat&logo=postgresql&logoColor=white) | Database | Latest |
 | ![JWT](https://img.shields.io/badge/JWT-000000?style=flat&logo=jsonwebtokens&logoColor=white) | Authentication | ES256 |
-| ![Swagger](https://img.shields.io/badge/swagger-85EA2D?style=flat&logo=swagger&logoColor=black) | API Documentation | ^11.2.3 |
+| ![Swagger](https://img.shields.io/badge/swagger-85EA2D?style=flat&logo=swagger&logoColor=black) | API Documentation | ^11.2.5 |
 | ![Jest](https://img.shields.io/badge/jest-C21325?style=flat&logo=jest&logoColor=white) | Testing | ^30.2.0 |
 
 ## Quick Start
@@ -299,6 +299,17 @@ bun run test:cov
 ```
 
 ## Recent Updates
+
+### January 2026 Update
+- ⬆️ Updated **NestJS** packages from v11.1.9 to v11.1.12
+- ⬆️ Updated **Prisma ORM** from v7.1.0 to v7.3.0
+- ⬆️ Updated **@nestjs/swagger** from v11.2.3 to v11.2.5
+- ⬆️ Updated **@nestjs/cli** from v11.0.14 to v11.0.16
+- ⬆️ Updated **TypeScript ESLint** from v8.49.0 to v8.54.0
+- ⬆️ Updated **nestjs-cls** from v6.1.0 to v6.2.0
+- ⬆️ Updated **Prettier** from v3.7.4 to v3.8.1
+- ⬆️ Updated **@types/node** from v24.10.2 to v25.1.0
+- ⬆️ Updated **supertest** from v7.1.4 to v7.2.2
 
 ### Version 11 (December 2025)
 - ✨ Upgraded to **NestJS v11** with Express v5
