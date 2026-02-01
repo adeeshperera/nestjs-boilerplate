@@ -2,6 +2,9 @@
 node_modules
 .pnpm-store
 
+# Lock files (keep bun.lockb - it's needed for Docker builds)
+# bun.lockb should NOT be ignored
+
 # Build outputs
 dist
 build

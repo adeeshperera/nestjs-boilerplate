@@ -68,7 +68,7 @@ services:
       - .:/app
       - /app/node_modules
       # Keys are generated inside the container during build
-    command: sh -c "npx prisma migrate dev && pnpm start:dev"
+    command: sh -c "npx prisma migrate dev && bun run dev"
     profiles:
       - dev
 

@@ -1,23 +1,31 @@
 import { Injectable, OnModuleInit, INestApplication } from '@nestjs/common';
-import { PrismaClient } from '../../generated/prisma';
-
-const globalForPrisma = globalThis as unknown as {
-  prisma: PrismaClient | undefined;
-};
+import { PrismaClient } from '@prisma/client';
+import { PrismaPg } from '@prisma/adapter-pg';
+import { Pool } from 'pg';
 
 @Injectable()
 export class PrismaService extends PrismaClient implements OnModuleInit {
+  private static instance: PrismaService | null = null;
+
   constructor() {
-    // Use existing instance if available (for hot-reloading in development)
-    if (globalForPrisma.prisma) {
-      return globalForPrisma.prisma as PrismaService;
+    // Reuse existing instance in development (for hot-reloading)
+    if (process.env.NODE_ENV !== 'production' && PrismaService.instance) {
+      return PrismaService.instance;
     }
+
+    // Create PostgreSQL connection pool
+    const connectionString = process.env.DATABASE_URL;
+    const pool = new Pool({ connectionString });
     
-    super();
+    // Create Prisma adapter with the pool
+    const adapter = new PrismaPg(pool);
+    
+    // Initialize PrismaClient with the adapter (required in Prisma 7+)
+    super({ adapter });
     
     // Store instance globally in development to prevent multiple instances
     if (process.env.NODE_ENV !== 'production') {
-      globalForPrisma.prisma = this;
+      PrismaService.instance = this;
     }
   }
 
